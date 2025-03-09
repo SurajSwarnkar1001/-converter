@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>😂 Small 🍆 Converter</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: #000; /* Black Background */
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(255, 0, 128, 0.5);
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-bottom: 10px;
+            color: #ff5e78;
+            text-shadow: 0px 0px 5px #ff007a;
+        }
+
+        p {
+            font-size: 16px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input {
+            background: #222;
+            color: #fff;
+            border: 1px solid #ff5e78;
+        }
+
+        button {
+            background: #ff007a;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0px 4px 15px rgba(255, 0, 128, 0.5);
+        }
+
+        button:hover {
+            background: #ff1e42;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .emoji-bar {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 0;
+        }
+
+        .emoji {
+            font-size: 40px;
+            opacity: 0;
+            transform: scale(0);
+            transition: opacity 0.5s, transform 0.5s;
+            display: inline-block;
+            filter: drop-shadow(0px 0px 10px rgba(255, 0, 128, 0.8));
+        }
+
+        /* 🍆 Bounce Animation */
+        .bounce {
+            animation: bounce 1s infinite alternate ease-in-out;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        /* 🍆 Shake Animation */
+        .shake {
+            animation: shake 0.3s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>😂 Small 🍆 Height Converter</h1>
+        <p>Enter your height, and we'll give you your 🍆 size !</p>
+        <input type="number" id="height" placeholder="Enter height in cm" min="50" />
+        <button onclick="convert()">Convert 🍆</button>
+        <div id="result"></div>
+        <div class="emoji-bar" id="emojiBar"></div>
+    </div>
+
+    <script>
+        function convert() {
+            let height = parseFloat(document.getElementById("height").value);
+            let resultDiv = document.getElementById("result");
+            let emojiBar = document.getElementById("emojiBar");
+
+            if (isNaN(height) || height < 50) {
+                resultDiv.innerHTML = "Enter a valid height! 😂";
+                emojiBar.innerHTML = "";
+                return;
+            }
+
+            // Formula to determine small penis size
+            let smallPenisSize = (height / 50) + Math.random(); // A fun calculation 😂
+
+            let phrases = [
+                "Better luck next time! 😆",
+                "Stay strong, king! 😂",
+                "Size doesn't matter... or does it? 🤔",
+                "Nature's joke! 😜",
+                "You might need a microscope! 🔬",
+                "Your ruler is disappointed!"
+            ];
+
+            let randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+            resultDiv.innerHTML = `Your 🍆 size is <strong>${smallPenisSize.toFixed(2)} cm</strong>. ${randomPhrase}`;
+
+            // Generate animated 🍆 emojis
+            emojiBar.innerHTML = "";
+            let emojis = Math.min(10, Math.floor(smallPenisSize)); // Limit to 10 for display purposes
+            for (let i = 0; i < emojis; i++) {
+                let emoji = document.createElement("span");
+                emoji.classList.add("emoji", i % 2 === 0 ? "bounce" : "shake");
+                emoji.innerHTML = "🍆";
+                emojiBar.appendChild(emoji);
+
+                // Animation delay for each emoji
+                setTimeout(() => {
+                    emoji.style.opacity = 1;
+                    emoji.style.transform = "scale(1)";
+                }, i * 100);
+            }
+        }
+    </script>
+</body>
+</html>
